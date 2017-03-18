@@ -1,6 +1,8 @@
 package com.example.android.tourguide;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,23 +25,26 @@ import com.google.android.gms.common.api.Status;
 public class SignIn extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
 
 
+    //public Context cntxt;
     private SignInButton signIn;
     private GoogleApiClient googleApiClient;
     public static final int REQ_CODE = 9001;
-    SignOut m ;
+  //  SignOut m ;
+    public String name,email;
+    public String imageUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
-        m=new SignOut();
+      //  m=new SignOut();
         Log.v("SignIn","1223654");
 
         signIn = (SignInButton)findViewById(R.id.signIn);
         signIn.setOnClickListener(this);
 
 
-        m.signOut.setOnClickListener(this);
+      //  m.signOut.setOnClickListener(this);
 
         Log.v("SignIn","SECXONH");
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -49,6 +54,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
 
         Log.v("SignIn","THIRD");
 
+
     }
 
     @Override
@@ -57,10 +63,11 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
             case R.id.signIn:
                 signIn();
                 break;
-            case R.id.signOut:
-                signOut11();
-                break;
-        }
+//           case R.id.signOut:
+//                signOut11();
+//                break;
+//        }
+       }
     }
 
     @Override
@@ -72,23 +79,25 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
         Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
         startActivityForResult(intent,REQ_CODE);
     }
-    public void signOut11(){
-        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
-            @Override
-            public void onResult(@NonNull Status status) {
-                updateUI(false);
+   public void signOut11(){
+       Toast.makeText(this,"mani",Toast.LENGTH_LONG).show();
+      Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+        @Override
+          public void onResult(@NonNull Status status) {
+               updateUI(false);
             }
         });
     }
     public void handleResult(GoogleSignInResult result){
         if (result.isSuccess()){
             GoogleSignInAccount account = result.getSignInAccount();
-            String name = account.getDisplayName();
-            String email = account.getEmail();
-            String imageUrl = account.getPhotoUrl().toString();
-            m.Name.setText(name);
-            m.email.setText(email);
-            Glide.with(this).load(imageUrl).into(m.pic);
+             name = account.getDisplayName();
+            email = account.getEmail();
+
+             imageUrl = account.getPhotoUrl().toString();
+    //        m.Name.setText(name);
+      //      m.email.setText(email);
+        //    Glide.with(this).load(imageUrl).into(m.pic);
             updateUI(true);
 
         }
@@ -98,7 +107,13 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
     }
     public void updateUI(boolean isLogin){
         if (isLogin){
-            //Intent to Main app
+
+            Intent i = new Intent(this,SignOut.class);
+                    i.putExtra("NAME",name);
+i.putExtra("EMAIL",email);
+            i.putExtra("IMAGE",imageUrl);
+            startActivity(i);
+
         }
         else {
             Toast.makeText(this,"Invalid Mail id",Toast.LENGTH_LONG).show();
@@ -110,9 +125,12 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==REQ_CODE){
+
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+
             handleResult(result);
         }
+
 
     }
 
