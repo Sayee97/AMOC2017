@@ -65,7 +65,7 @@ Bundle b = getIntent().getExtras();
 
         Toast.makeText(getApplicationContext(),"third",Toast.LENGTH_LONG).show();
 
-     
+
         //SignIn m = new SignIn();
         Toast.makeText(getApplicationContext(),"first",Toast.LENGTH_LONG).show();
         //m.signOut11();
