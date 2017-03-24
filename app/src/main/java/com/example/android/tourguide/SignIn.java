@@ -120,10 +120,12 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
     public void updateUI(boolean isLogin){
         if (isLogin){
 
-            Intent i = new Intent(this,SignOut.class);
-                    i.putExtra("NAME",name);
-i.putExtra("EMAIL",email);
-            i.putExtra("IMAGE",imageUrl);
+       //     Intent i = new Intent(this,SignOut.class);
+         //           i.putExtra("NAME",name);
+//i.putExtra("EMAIL",email);
+  //          i.putExtra("IMAGE",imageUrl);
+    //        startActivity(i);
+            Intent i = new Intent(this,LocationTracing.class);
             startActivity(i);
 
         }
