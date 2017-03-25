@@ -3,6 +3,7 @@ package com.example.android.tourguide;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -24,7 +25,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
-public class SignIn extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
+import static com.example.android.tourguide.R.id.signIn;
+
+public class SignIn extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener{
 
 
     ViewPager viewPager;
@@ -38,10 +41,13 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
     public String name,email;
     public String imageUrl;
 
+//    Async a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+
+       // a= new Async();
 
 
         viewPager = (ViewPager)findViewById(R.id.viewPager);
@@ -50,7 +56,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
         tabLayout.setupWithViewPager(viewPager,true);
         viewPager.setAdapter(adapter);
       //  m=new SignOut();
-        Log.v("SignIn","1223654");
+        //Log.v("SignIn","1223654");
 
         signIn = (SignInButton)findViewById(R.id.signIn);
         signIn.setOnClickListener(this);
@@ -58,28 +64,15 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
 
       //  m.signOut.setOnClickListener(this);
 
-        Log.v("SignIn","SECXONH");
+        //Log.v("SignIn","SECXONH");
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient  = new GoogleApiClient.Builder(this).enableAutoManage(this,this).addApi(Auth.GOOGLE_SIGN_IN_API,googleSignInOptions).build();
 
 
 
-        Log.v("SignIn","THIRD");
+        //Log.v("SignIn","THIRD");
 
 
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.signIn:
-                signIn();
-                break;
-//           case R.id.signOut:
-//                signOut11();
-//                break;
-//        }
-       }
     }
 
     @Override
@@ -87,31 +80,55 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
 
     }
 
-    public void signIn(){
-        Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-        startActivityForResult(intent,REQ_CODE);
-    }
-   public void signOut11(){
-       Toast.makeText(this,"mani",Toast.LENGTH_LONG).show();
-      Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+
+    private class Async extends AsyncTask<GoogleApiClient,Void,GoogleSignInResult> {
+
+
         @Override
-          public void onResult(@NonNull Status status) {
-               updateUI(false);
-            }
-        });
+        protected GoogleSignInResult doInBackground(GoogleApiClient... params) {
+            Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+            startActivityForResult(intent,REQ_CODE);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(GoogleSignInResult googleSignInResult) {
+            super.onPostExecute(googleSignInResult);
+        }
     }
+
+    @Override
+    public void onClick(View v) {
+
+        Async async = new Async();
+        async.execute(googleApiClient);
+    }
+
+//    @Override
+//    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+//
+//    }
+
+//    public void signIn(){
+//        Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+//        startActivityForResult(intent,REQ_CODE);
+//    }
+//   public void signOut11(){
+//       Toast.makeText(this,"mani",Toast.LENGTH_LONG).show();
+//      Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+//        @Override
+//          public void onResult(@NonNull Status status) {
+//               updateUI(false);
+//            }
+//        });
+//    }
     public void handleResult(GoogleSignInResult result){
         if (result.isSuccess()){
             GoogleSignInAccount account = result.getSignInAccount();
              name = account.getDisplayName();
             email = account.getEmail();
-
              imageUrl = account.getPhotoUrl().toString();
-    //        m.Name.setText(name);
-      //      m.email.setText(email);
-        //    Glide.with(this).load(imageUrl).into(m.pic);
             updateUI(true);
-
         }
         else {
             updateUI(false);
@@ -119,13 +136,10 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
     }
     public void updateUI(boolean isLogin){
         if (isLogin){
-
-       //     Intent i = new Intent(this,SignOut.class);
-         //           i.putExtra("NAME",name);
-//i.putExtra("EMAIL",email);
-  //          i.putExtra("IMAGE",imageUrl);
-    //        startActivity(i);
-            Intent i = new Intent(this,LocationTracing.class);
+            Intent i = new Intent(this,SignOut.class);
+            i.putExtra("EMAIL",email);
+            i.putExtra("IMAGE",imageUrl);
+            i.putExtra("NAME",name);
             startActivity(i);
 
         }
