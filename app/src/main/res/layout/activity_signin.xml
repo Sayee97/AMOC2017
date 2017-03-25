@@ -28,7 +28,7 @@
         app:tabGravity="center"
         app:tabIndicatorHeight="0dp"
         android:layout_alignParentTop="false"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="7dp"
         android:layout_above="@+id/signIn">
 
     </android.support.design.widget.TabLayout>
