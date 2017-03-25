@@ -136,10 +136,10 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
     }
     public void updateUI(boolean isLogin){
         if (isLogin){
-            Intent i = new Intent(this,SignOut.class);
-            i.putExtra("EMAIL",email);
-            i.putExtra("IMAGE",imageUrl);
-            i.putExtra("NAME",name);
+            Intent i = new Intent(this,Place_Picker.class);
+//            i.putExtra("EMAIL",email);
+//            i.putExtra("IMAGE",imageUrl);
+//            i.putExtra("NAME",name);
             startActivity(i);
 
         }
