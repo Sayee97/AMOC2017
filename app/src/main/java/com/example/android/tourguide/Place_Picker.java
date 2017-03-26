@@ -28,7 +28,7 @@ import static com.example.android.tourguide.SignIn.REQ_CODE;
 
 public class Place_Picker extends AppCompatActivity {
 
-    private TextView name,type,priceLevel;
+    private TextView name;
     private TextView address1,phoneNo;
     private final int REQ_CODE = 1 ;
     private ImageView imageView1;
@@ -41,12 +41,12 @@ public class Place_Picker extends AppCompatActivity {
         setContentView(R.layout.activity_place__picker);
         address1 = (TextView) findViewById(R.id.place);
         rate = (RatingBar) findViewById(R.id.ratingBar);
-        type = (TextView) findViewById(R.id.type);
+        //type = (TextView) findViewById(R.id.type);
         website = (TextView) findViewById(R.id.website);
         name = (TextView) findViewById(R.id.name12);
         phoneNo = (TextView) findViewById(R.id.phone);
         imageView1 = (ImageView) findViewById(R.id.imagedart);
-        priceLevel = (TextView) findViewById(R.id.price);
+        //priceLevel = (TextView) findViewById(R.id.price);
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,29 +90,45 @@ public class Place_Picker extends AppCompatActivity {
 
             name.setText(name13);
             address1.setText(address);
-            phoneNo.setText(place.getPhoneNumber());
-            rate.setRating(place.getRating());
-
-           //Toast.makeText(getApplicationContext(),"mansi"+place.getRating(),Toast.LENGTH_LONG).show();
-           rate.setEnabled(false);
-            Uri url = place.getWebsiteUri();
-
-           website.setText(url.toString());
-
-            switch (place.getPriceLevel())
-            {
-                case 0 : priceLevel.setText("Cheapest");
-                    break;
-                case 1 :priceLevel.setText("Cheaper");
-                    break;
-                case 2 :priceLevel.setText("Moderate");
-                    break;
-                case 3 :priceLevel.setText("Expensive");
-                    break;
-                case 4 :priceLevel.setText("Most Expensive");
-                    break;
-
+            if (place.getPhoneNumber() != null){
+                phoneNo.setText(place.getPhoneNumber());
             }
+            else{
+                phoneNo.setVisibility(View.GONE);
+            }
+
+            if (place.getRating() >= 0){
+                rate.setRating(place.getRating());
+                rate.setEnabled(false);
+            }
+            else{
+                rate.setVisibility(View.GONE);
+            }
+
+            if (place.getWebsiteUri() != null){
+
+                Uri url = place.getWebsiteUri();
+
+                website.setText(url.toString());
+            }
+            else{
+                website.setVisibility(View.GONE);
+            }
+
+//            switch (place.getPriceLevel())
+//            {
+//                case 0 : priceLevel.setText("Cheapest");
+//                    break;
+//                case 1 :priceLevel.setText("Cheaper");
+//                    break;
+//                case 2 :priceLevel.setText("Moderate");
+//                    break;
+//                case 3 :priceLevel.setText("Expensive");
+//                    break;
+//                case 4 :priceLevel.setText("Most Expensive");
+//                    break;
+//
+//            }
 
         }
 
