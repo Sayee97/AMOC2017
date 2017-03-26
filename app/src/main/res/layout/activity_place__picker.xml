@@ -11,39 +11,60 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/dart"
-        android:id="@+id/imagedart" />
+        android:id="@+id/imagedart"
+        android:scaleType="centerCrop"/>
+
+
+
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/name12"/>
+        android:id="@+id/name12"
+        android:layout_margin="5dp"
+        android:textSize="12sp"/>
 
-    <WebView
+    <TextView
+        android:id="@+id/place"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/website"/>
+        android:layout_margin="5dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:id="@+id/type"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/price"
+        android:layout_margin="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/website"
+        android:autoLink="web"
+        android:layout_margin="5dp"/>
+
+
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="phone"
+        android:layout_margin="5dp"/>
 
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/place"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPostalAddress" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone" />
+        android:layout_margin="5dp"
+        android:stepSize="0.1"/>
 
 </LinearLayout>
