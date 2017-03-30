@@ -14,10 +14,6 @@
         android:id="@+id/imagedart"
         android:scaleType="centerCrop"/>
 
-
-
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,18 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"/>
-
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/website"
         android:autoLink="web"
         android:layout_margin="5dp"/>
-
-
-
     <TextView
         android:id="@+id/phone"
         android:layout_width="wrap_content"
@@ -55,5 +45,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:stepSize="0.1"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/image3"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/attri"/>
 
 </LinearLayout>
