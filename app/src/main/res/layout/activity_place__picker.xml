@@ -54,4 +54,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/attri"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD TO TRIP"
+        android:visibility="gone"
+        android:onClick="addToTrip"
+        android:id="@+id/trip"/>
+
 </LinearLayout>

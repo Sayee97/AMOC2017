@@ -26,10 +26,9 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDa565tERkrCEIzPqmOOliY2P2KSoVI_v8"></meta-data>
+            android:value="AIzaSyDa565tERkrCEIzPqmOOliY2P2KSoVI_v8" />
 
-        <activity android:name=".Place_Picker"></activity>
-
+        <activity android:name=".Place_Picker" />
         <activity
             android:name=".SignOut"
             android:parentActivityName=".SignIn" />
@@ -37,6 +36,7 @@
             android:name=".successfullSignIn"
             android:label="@string/title_activity_successfull_sign_in"
             android:theme="@style/AppTheme" />
+        <activity android:name=".CreateTrip"></activity>
     </application>
 
 </manifest>

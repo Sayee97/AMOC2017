@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -48,6 +49,7 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
     TextView txt;
     GoogleApiClient mGoogleApiClient;
     ImageView mImageView;
+    Button trip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,7 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
         txt = (TextView)findViewById(R.id.attri);
         mImageView = (ImageView)findViewById(R.id.image3);
         imageView1 = (ImageView) findViewById(R.id.imagedart);
+        trip = (Button) findViewById(R.id.trip);
 
 
 
@@ -135,6 +138,8 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
                 website.setVisibility(View.GONE);
             }
 
+            trip.setVisibility(View.VISIBLE);
+
 //            switch (place.getPriceLevel())
 //            {
 //                case 0 : priceLevel.setText("Cheapest");
@@ -180,6 +185,11 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
         }
 
 
+    }
+
+    public void addToTrip(View view){
+        Intent i = new Intent(this,CreateTrip.class);
+        startActivity(i);
     }
 
     @Override
