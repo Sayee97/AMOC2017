@@ -10,56 +10,81 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/dart"
+        android:src="@drawable/roadtrip"
         android:id="@+id/imagedart"
         android:scaleType="centerCrop"/>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_weight="1"
+        android:id="@+id/image3"/>
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/attri"
+        android:layout_gravity="end"
+        android:textColorLink="#000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:id="@+id/name12"
-        android:layout_margin="5dp"
-        android:textSize="12sp"/>
+        android:textColor="#000"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
     <TextView
         android:id="@+id/place"
+        android:textColor="#000"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"/>
+        android:layout_height="0dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/marker"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="5dp"
+        android:gravity="center"
+        android:drawableLeft="@drawable/domain"
         android:id="@+id/website"
+        android:textColorLink="#000"
         android:autoLink="web"
-        android:layout_margin="5dp"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
     <TextView
         android:id="@+id/phone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:autoLink="phone"
-        android:layout_margin="5dp"/>
+        android:textColorLink="#000"
+        android:drawableLeft="@drawable/phone"
+        android:layout_marginLeft="5dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:theme="@style/RatingBar"
         android:stepSize="0.1"/>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/image3"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/attri"/>
 
     <Button
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:text="ADD TO TRIP"
         android:visibility="gone"
         android:onClick="addToTrip"
-        android:id="@+id/trip"/>
+        android:id="@+id/trip" />
 
 </LinearLayout>

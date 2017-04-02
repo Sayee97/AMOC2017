@@ -16,15 +16,17 @@ import java.util.Calendar;
 
 public class CreateTrip extends AppCompatActivity {
 
-    private TextView checkInDate , checkOutDate;
+    private TextView checkInDate , checkOutDate,name,address;
     int year,month,day;
     private Calendar calendar;
     private static final int ID=999,REQ=1000;
     int year1,day1,month1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle b = getIntent().getExtras();
         setContentView(R.layout.activity_create_trip);
         checkInDate = (TextView) findViewById(R.id.CheckInDate);
         checkInDate.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
@@ -32,7 +34,10 @@ public class CreateTrip extends AppCompatActivity {
         checkOutDate.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
-
+        name = (TextView) findViewById(R.id.nameOfPlace);
+        name.setText(b.getString("name"));
+        address = (TextView) findViewById(R.id.placeAddress);
+        address.setText(b.getString("address"));
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
         year1 = calendar.get(Calendar.YEAR);

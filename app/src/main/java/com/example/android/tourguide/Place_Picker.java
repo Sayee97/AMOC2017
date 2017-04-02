@@ -46,6 +46,7 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
     private TextView website;
     private RatingBar rate;
 
+    String address,name13;
     TextView txt;
     GoogleApiClient mGoogleApiClient;
     ImageView mImageView;
@@ -108,8 +109,8 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
         if (requestCode==REQ_CODE && resultCode== Activity.RESULT_OK){
             Place place = PlacePicker.getPlace(this,data);
             imageView1.setVisibility(View.GONE);
-            String address = place.getAddress().toString();
-            String name13 = place.getName().toString();
+            address = place.getAddress().toString();
+            name13 = place.getName().toString();
 
             name.setText(name13);
             address1.setText(address);
@@ -189,6 +190,8 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
 
     public void addToTrip(View view){
         Intent i = new Intent(this,CreateTrip.class);
+        i.putExtra("name",name13);
+        i.putExtra("address",address);
         startActivity(i);
     }
 
