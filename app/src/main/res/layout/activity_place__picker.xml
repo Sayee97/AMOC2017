@@ -25,7 +25,8 @@
         android:layout_weight="1"
         android:id="@+id/attri"
         android:layout_gravity="end"
-        android:textColorLink="#000"/>
+        android:textColorLink="#000"
+        android:textSize="10sp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,7 +35,7 @@
         android:id="@+id/name12"
         android:textColor="#000"
         android:layout_marginLeft="5dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        android:textSize="15sp"/>
 
     <TextView
         android:id="@+id/place"
@@ -45,7 +46,7 @@
         android:gravity="center_vertical"
         android:layout_weight="1"
         android:drawableLeft="@drawable/marker"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+        android:textSize="12sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -56,7 +57,7 @@
         android:id="@+id/website"
         android:textColorLink="#000"
         android:autoLink="web"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+        android:textSize="12sp" />
     <TextView
         android:id="@+id/phone"
         android:layout_width="wrap_content"
@@ -67,7 +68,7 @@
         android:drawableLeft="@drawable/phone"
         android:layout_marginLeft="5dp"
         android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+        android:textSize="12sp"/>
 
     <RatingBar
         android:id="@+id/ratingBar"
