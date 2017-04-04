@@ -3,6 +3,7 @@ package com.example.android.tourguide;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.example.android.tourguide.Database.TourDbHelper;
 
 import org.w3c.dom.Text;
 
@@ -25,6 +28,8 @@ public class CreateTrip extends AppCompatActivity {
     int year1,day1,month1;
     int hour,minute,hour1,minute1;
 
+    private String destination,addressOfplace;
+    private StringBuilder inTime,outTime,inDate,outDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,8 @@ public class CreateTrip extends AppCompatActivity {
         year = calendar.get(Calendar.YEAR);
         name = (TextView) findViewById(R.id.nameOfPlace);
         name.setText(b.getString("name"));
+        destination = b.getString("name");
+        addressOfplace = b.getString("address");
         address = (TextView) findViewById(R.id.placeAddress);
         address.setText(b.getString("address"));
         month = calendar.get(Calendar.MONTH);
@@ -60,8 +67,9 @@ public class CreateTrip extends AppCompatActivity {
     }
 
     private void showDate1(int year1, int month1, int day1) {
-        checkOutDate.setText(new StringBuilder().append(day1).append("/")
-                .append(month1).append("/").append(year1));
+        outDate = new StringBuilder().append(day1).append("/")
+                .append(month1).append("/").append(year1);
+        checkOutDate.setText(outDate);
     }
 
     public void setCheckInDate(View view){
@@ -108,8 +116,9 @@ public class CreateTrip extends AppCompatActivity {
 
 
     private void showDate(int year, int month, int day) {
-        checkInDate.setText(new StringBuilder().append(day).append("/")
-                .append(month).append("/").append(year));
+        inDate = new StringBuilder().append(day).append("/")
+                .append(month).append("/").append(year);
+        checkInDate.setText(inDate);
     }
 
     public void setCheckOutDate(View view){
@@ -157,12 +166,14 @@ public class CreateTrip extends AppCompatActivity {
         }
 
         if(minute < 10){
-            checkInTime.setText(new StringBuilder().append(hour).append(":").append(0)
-                    .append(minute).append(format));
+            inTime = new StringBuilder().append(hour).append(":").append(0)
+                    .append(minute).append(format);
+            checkInTime.setText(inTime);
         }
         else {
-            checkInTime.setText(new StringBuilder().append(hour).append(":")
-                    .append(minute).append(format));
+            inTime = new StringBuilder().append(hour).append(":")
+                    .append(minute).append(format);
+            checkInTime.setText(inTime);
         }
     }
 
@@ -181,12 +192,22 @@ public class CreateTrip extends AppCompatActivity {
         }
 
         if(minute < 10){
-            checkOutTime.setText(new StringBuilder().append(hour).append(":").append(0)
-                    .append(minute).append(format));
+            outTime = new StringBuilder().append(hour).append(":").append(0)
+                    .append(minute).append(format);
+            checkOutTime.setText(outTime);
         }
         else {
-            checkOutTime.setText(new StringBuilder().append(hour).append(":")
-                    .append(minute).append(format));
+            outTime = new StringBuilder().append(hour).append(":")
+                    .append(minute).append(format);
+            checkOutTime.setText(outTime);
         }
+    }
+
+    public void save(View view){
+        TourDbHelper tdb = new TourDbHelper(this);
+        tdb.insert(tdb,destination,addressOfplace,inDate.toString(),outDate.toString(),inTime.toString(),outTime.toString());
+        Intent intent = new Intent(this,Itenary.class);
+        startActivity(intent);
+
     }
 }

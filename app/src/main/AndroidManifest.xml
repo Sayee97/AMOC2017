@@ -36,7 +36,8 @@
             android:name=".successfullSignIn"
             android:label="@string/title_activity_successfull_sign_in"
             android:theme="@style/AppTheme" />
-        <activity android:name=".CreateTrip"></activity>
+        <activity android:name=".CreateTrip" />
+        <activity android:name=".Itenary"></activity>
     </application>
 
 </manifest>
