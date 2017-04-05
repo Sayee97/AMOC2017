@@ -54,7 +54,7 @@ public class TourDbHelper extends SQLiteOpenHelper{
     public Cursor select(TourDbHelper tdb){
         SQLiteDatabase db = tdb.getReadableDatabase();
         String[] projection = {tourEntry.DESTINATION,tourEntry.ADDRESS,tourEntry.CHECKIN_DATE,tourEntry.CHECKOUT_DATE,tourEntry.CHECKIN_TIME,tourEntry.CHECKOUT_TIME};
-        Cursor c=  db.query(tourEntry.TABLE_NAME,projection,null,null,null,null,null);
+        Cursor c=  db.query(tourEntry.TABLE_NAME,projection,null,null,null,null,tourEntry.CHECKIN_DATE + ","+tourEntry.CHECKIN_TIME + " ASC");
         return c;
     }
 
