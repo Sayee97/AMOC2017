@@ -6,15 +6,27 @@ package com.example.android.tourguide;
 
 public class info {
 
-    private String destination,address,inDate,outDate,inTime,outTime;
+    private String  id,destination,address,inDate,outDate,inTime,outTime;
 
-    public info(String destination, String address, String inDate, String outDate, String inTime, String outTime){
+
+    public info(String id, String destination, String address, String inDate, String outDate, String inTime, String outTime){
+        this.setId(id);
         this.setAddress(address);
         this.setDestination(destination);
         this.setInDate(inDate);
         this.setInTime(inTime);
         this.setOutTime(outTime);
         this.setOutDate(outDate);
+
+    }
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getDestination() {

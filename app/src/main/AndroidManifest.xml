@@ -38,6 +38,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".CreateTrip" />
         <activity android:name=".Itenary"></activity>
+
     </application>
 
 </manifest>

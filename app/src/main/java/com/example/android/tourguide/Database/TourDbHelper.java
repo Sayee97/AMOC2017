@@ -9,6 +9,8 @@ import android.util.Log;
 
 import com.example.android.tourguide.Database.TourContract.tourEntry;
 
+import static android.R.attr.id;
+import static android.R.attr.name;
 import static android.R.attr.version;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
@@ -17,7 +19,8 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
  */
 
 public class TourDbHelper extends SQLiteOpenHelper{
-    public String CREATE_TABLE = "CREATE TABLE " + tourEntry.TABLE_NAME + " (" + tourEntry.DESTINATION +" TEXT,"
+    public String CREATE_TABLE = "CREATE TABLE " + tourEntry.TABLE_NAME + " ("+tourEntry._ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + tourEntry.DESTINATION +" TEXT,"
             +tourEntry.ADDRESS + " TEXT,"
             +tourEntry.CHECKIN_DATE + " TEXT," +tourEntry.CHECKOUT_DATE + " TEXT," + tourEntry.CHECKIN_TIME + " TEXT," +
             tourEntry.CHECKOUT_TIME + " TEXT);";
@@ -53,16 +56,16 @@ public class TourDbHelper extends SQLiteOpenHelper{
     }
     public Cursor select(TourDbHelper tdb){
         SQLiteDatabase db = tdb.getReadableDatabase();
-        String[] projection = {tourEntry.DESTINATION,tourEntry.ADDRESS,tourEntry.CHECKIN_DATE,tourEntry.CHECKOUT_DATE,tourEntry.CHECKIN_TIME,tourEntry.CHECKOUT_TIME};
+        String[] projection = {tourEntry._ID,tourEntry.DESTINATION,tourEntry.ADDRESS,tourEntry.CHECKIN_DATE,tourEntry.CHECKOUT_DATE,tourEntry.CHECKIN_TIME,tourEntry.CHECKOUT_TIME};
         Cursor c=  db.query(tourEntry.TABLE_NAME,projection,null,null,null,null,tourEntry.CHECKIN_DATE + ","+tourEntry.CHECKIN_TIME + " ASC");
         return c;
     }
 
 
-    public void delete(TourDbHelper tdb,String name){
+    public void delete(TourDbHelper tdb,String id){
         SQLiteDatabase db = tdb.getWritableDatabase();
-        String selection = tourEntry.DESTINATION + "= ?" ;
-        String[] args = {name};
+        String selection = tourEntry._ID + "= ?" ;
+        String[] args = {id};
         db.delete(tourEntry.TABLE_NAME,selection,args);
     }
     public void update(TourDbHelper tdb, String oName , String nName){
