@@ -53,7 +53,6 @@ public class tourAdapter extends ArrayAdapter{
             LayoutInflater layoutInflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row =  layoutInflater.inflate(R.layout.list_item,parent,false);
             holder = new Holder();
-            holder.id=(TextView)row.findViewById(R.id.ID);
             holder.address = (TextView) row.findViewById(R.id.address);
             holder.destination = (TextView) row.findViewById(R.id.destination);
             holder.inDate = (TextView) row.findViewById(R.id.inDate);
@@ -68,7 +67,6 @@ public class tourAdapter extends ArrayAdapter{
         }
 
         info Info = (info) getItem(position);
-        holder.id.setText(Info.getId());
         holder.destination.setText(Info.getDestination());
         holder.address.setText(Info.getAddress());
         holder.inTime.setText(Info.getInTime());

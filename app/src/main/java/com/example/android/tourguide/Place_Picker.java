@@ -64,7 +64,7 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
         phoneNo = (TextView) findViewById(R.id.phone);
         txt = (TextView)findViewById(R.id.attri);
         mImageView = (ImageView)findViewById(R.id.image3);
-        imageView1 = (ImageView) findViewById(R.id.imagedart);
+        imageView1 = (ImageView) findViewById(R.id.roadtrip);
         trip = (Button) findViewById(R.id.trip);
 
 

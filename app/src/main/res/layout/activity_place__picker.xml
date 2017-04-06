@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/roadtrip"
-        android:id="@+id/imagedart"
+        android:id="@+id/roadtrip"
         android:scaleType="centerCrop"/>
 
     <ImageView
