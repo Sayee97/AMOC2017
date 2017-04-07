@@ -14,10 +14,4 @@
 
     </ListView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="createPdf"
-        android:text="CREATE PDF"
-        android:id="@+id/pdf"/>
 </LinearLayout>

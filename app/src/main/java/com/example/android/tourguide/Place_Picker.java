@@ -34,7 +34,6 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.text.Text;
 
 import static android.os.Build.VERSION_CODES.M;
-import static com.example.android.tourguide.R.id.imageView;
 import static com.example.android.tourguide.SignIn.REQ_CODE;
 
 public class Place_Picker extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener{
