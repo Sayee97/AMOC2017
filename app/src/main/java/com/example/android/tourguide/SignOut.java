@@ -18,7 +18,7 @@ import static android.R.attr.name;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 //import static com.example.android.tourguide.R.id.pic;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
-import static com.example.android.tourguide.R.id.signOut;
+import static com.example.android.tourguide.R.id.pic11;
 
 public class SignOut extends AppCompatActivity {
 
@@ -31,8 +31,8 @@ public class SignOut extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 Bundle b = getIntent().getExtras();
-        String name3= b.getString("NAME");
-        String email3= b.getString("EMAIL");
+        String name3= b.getString("name");
+        String email3= b.getString("email");
 
 
 
@@ -42,34 +42,23 @@ Bundle b = getIntent().getExtras();
 
         Name1 = (TextView)findViewById(R.id.name11);
         email1 = (TextView)findViewById(R.id.email11);
-        signOut1 = (Button)findViewById(signOut);
-        pic1 = (ImageView)findViewById(R.id.pic11);
+        pic1 = (ImageView)findViewById(pic11);
 
 
-        Log.v("s","sayeejhsfidhidhfkdfhisdfhis");
+        //Log.v("s","sayeejhsfidhidhfkdfhisdfhis");
 
        // Toast.makeText(getApplicationContext(),"ffff",Toast.LENGTH_LONG).show();
         email1.setText(email3);
       //  Bitmap r = Bitmap.createScaledBitmap()
-        Log.v("hh",b.getString("IMAGE"));
+       // Log.v("hh",b.getString("IMAGE"));
         Name1.setText(name3);
+        Toast.makeText(getApplicationContext(),b.getString("image"),Toast.LENGTH_LONG).show();
       //  pic.setImageURI( Glide.with(this).load(m.imageUrl).into(m.));
-        Glide.with(this).load( b.getString("IMAGE")).override(250,250).into(pic1);
+        Glide.with(this).load( b.getString("image")).override(250,250).into(pic1);
 
 
 
     }
 
-    public void sign(View view){
 
-
-        Toast.makeText(getApplicationContext(),"third",Toast.LENGTH_LONG).show();
-
-
-        //SignIn m = new SignIn();
-        Toast.makeText(getApplicationContext(),"first",Toast.LENGTH_LONG).show();
-        //m.signOut11();
-
-        Toast.makeText(getApplicationContext(),"second",Toast.LENGTH_LONG).show();
-    }
 }

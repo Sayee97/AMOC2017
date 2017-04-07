@@ -78,4 +78,8 @@ public class TourDbHelper extends SQLiteOpenHelper{
         db.update(tourEntry.TABLE_NAME,v,selection,args);
     }
 
+    public void deleteTrip(TourDbHelper tdb){
+        SQLiteDatabase db = tdb.getWritableDatabase();
+        db.delete(tourEntry.TABLE_NAME,null,null);
+    }
 }

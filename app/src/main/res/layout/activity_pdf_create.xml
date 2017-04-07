@@ -4,15 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    android:orientation="vertical"
-    tools:context="com.example.android.tourguide.Itenary">
+    tools:context="com.example.android.tourguide.PdfCreate">
 
-    <ListView
-        android:id="@+id/listView"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ListView>
+        android:layout_height="match_parent"
+        android:src="@drawable/pdficon"
+        android:scaleType="centerCrop"/>
 
 </LinearLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
     tools:context="com.example.android.tourguide.CreateTrip">
 
@@ -11,93 +12,95 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_margin="10dp"
         android:layout_weight="1"
+        android:gravity="center"
         android:text="Destination"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
         android:id="@+id/nameOfPlace"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/signpost"
         android:gravity="center_vertical"
-        android:textColor="#000"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:drawableLeft="@drawable/signpost"/>
+        android:textColor="#000" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
         android:id="@+id/placeAddress"
-        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:drawableLeft="@drawable/marker"
-        android:textColor="#000"
+        android:gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
 
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-    <TextView
-        android:id="@+id/CheckInDate"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:onClick="setCheckInDate"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:drawableLeft="@drawable/calendar"
-        android:textColor="#000"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-    <TextView
-        android:id="@+id/CheckOutDate"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:textColor="#000"
-        android:layout_height="wrap_content"
-        android:onClick="setCheckOutDate"
-        android:layout_margin="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
-</LinearLayout>
+        android:textColor="#000" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/CheckInDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/calendar"
+            android:gravity="center"
+            android:onClick="setCheckInDate"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/CheckOutDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:onClick="setCheckOutDate"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
         <TextView
             android:id="@+id/CheckInTime"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:onClick="setCheckInTime"
             android:layout_margin="10dp"
-            android:gravity="center"
+            android:layout_weight="1"
             android:drawableLeft="@drawable/alarm"
-            android:textColor="#000"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            android:gravity="center"
+            android:onClick="setCheckInTime"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000" />
 
         <TextView
             android:id="@+id/CheckOutTime"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:textColor="#000"
             android:layout_height="wrap_content"
-            android:onClick="setCheckOutTime"
             android:layout_margin="10dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            android:layout_weight="1"
+            android:onClick="setCheckOutTime"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000" />
     </LinearLayout>
 
     <Button
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
+        android:id="@+id/save"
         android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        android:text="SAVE"
         android:onClick="save"
-        android:id="@+id/save"/>
+        android:text="SAVE" />
 </LinearLayout>

@@ -2,6 +2,8 @@ package com.example.android.tourguide;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -25,6 +27,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
+import static android.R.attr.data;
 import static com.example.android.tourguide.R.id.signIn;
 
 public class SignIn extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener{
@@ -113,15 +116,15 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
 //        Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
 //        startActivityForResult(intent,REQ_CODE);
 //    }
-//   public void signOut11(){
-//       Toast.makeText(this,"mani",Toast.LENGTH_LONG).show();
-//      Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
-//        @Override
-//          public void onResult(@NonNull Status status) {
-//               updateUI(false);
-//            }
-//        });
-//    }
+   public void signOut11(){
+       Toast.makeText(this,"mani",Toast.LENGTH_LONG).show();
+      Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+        @Override
+          public void onResult(@NonNull Status status) {
+               updateUI(false);
+            }
+        });
+    }
     public void handleResult(GoogleSignInResult result){
         if (result.isSuccess()){
             GoogleSignInAccount account = result.getSignInAccount();
@@ -134,19 +137,32 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
             updateUI(false);
         }
     }
-    public void updateUI(boolean isLogin){
-        if (isLogin){
-            Intent i = new Intent(this,Place_Picker.class);
-//            i.putExtra("EMAIL",email);
-//            i.putExtra("IMAGE",imageUrl);
-//            i.putExtra("NAME",name);
+    public void updateUI(boolean isLogin) {
+        boolean hc = false, hcm = false;
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] networkInfos = cm.getAllNetworkInfo();
+        if (isLogin) {
+            Intent i = new Intent(this, FrontEnd.class);
+            i.putExtra("EMAIL", email);
+            i.putExtra("IMAGE", imageUrl);
+            i.putExtra("NAME", name);
             startActivity(i);
 
-        }
-        else {
-            Toast.makeText(this,"Invalid Mail id",Toast.LENGTH_LONG).show();
-        }
+        } else {
+            for (NetworkInfo ni : networkInfos) {
+                if (ni.getTypeName().equalsIgnoreCase("WIFI")) {
+                    if (ni.isConnected()) {
+                        hc = true;
+                        Toast.makeText(getApplicationContext(), "Please connect to WiFi", Toast.LENGTH_LONG).show();
+                    }
+                    if (ni.getTypeName().equalsIgnoreCase("MOBILE")) {
+                        hcm = true;
+                        Toast.makeText(getApplicationContext(), "Please connect to Mobile Data", Toast.LENGTH_LONG);
+                    }
+                }
+            }
 
+        }
     }
 
     @Override

@@ -41,19 +41,19 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
     private TextView name ;
     private TextView address1,phoneNo;
     private final int REQ_CODE = 1 ;
-    private ImageView imageView1;
     private TextView website;
     private RatingBar rate;
 
     String address,name13;
     TextView txt;
     GoogleApiClient mGoogleApiClient;
-    ImageView mImageView;
+    ImageView mImageView,imageView;
     Button trip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        startPlacePickerActivity();
         setContentView(R.layout.activity_place__picker);
         address1 = (TextView) findViewById(R.id.place);
         rate = (RatingBar) findViewById(R.id.ratingBar);
@@ -63,19 +63,10 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
         phoneNo = (TextView) findViewById(R.id.phone);
         txt = (TextView)findViewById(R.id.attri);
         mImageView = (ImageView)findViewById(R.id.image3);
-        imageView1 = (ImageView) findViewById(R.id.roadtrip);
         trip = (Button) findViewById(R.id.trip);
+        imageView = (ImageView) findViewById(R.id.roadmap);
 
 
-
-        //priceLevel = (TextView) findViewById(R.id.price);
-        imageView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //           new MyT
-                startPlacePickerActivity();
-            }
-        });
 
         mGoogleApiClient  = new GoogleApiClient.Builder(this).enableAutoManage(this,0,this).addApi(Places.GEO_DATA_API).addApi(Places.PLACE_DETECTION_API).build();
 
@@ -107,7 +98,7 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==REQ_CODE && resultCode== Activity.RESULT_OK){
             Place place = PlacePicker.getPlace(this,data);
-            imageView1.setVisibility(View.GONE);
+            imageView.setVisibility(View.GONE);
             address = place.getAddress().toString();
             name13 = place.getName().toString();
 
@@ -117,7 +108,7 @@ public class Place_Picker extends AppCompatActivity implements GoogleApiClient.C
                 phoneNo.setText(place.getPhoneNumber());
             }
             else{
-                phoneNo.setVisibility(View.GONE);
+                phoneNo.setText("Contact details not available for searched attribute");
             }
 
             if (place.getRating() >= 0){

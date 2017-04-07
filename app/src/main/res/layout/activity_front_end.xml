@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    android:orientation="vertical"
+    tools:context="com.example.android.tourguide.FrontEnd">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Trip"
+            android:onClick="myTrip"
+            android:id="@+id/button3"
+            android:layout_below="@+id/button4"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="43dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place Picker"
+            android:onClick="PlaceSelect"
+            android:id="@+id/button4"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="85dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="deleteMyTrip"
+            android:text="DELETE TRIP"
+            android:id="@+id/button7"
+            android:layout_above="@+id/button2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="13dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="pro"
+            android:text="Profile"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/button4"
+            android:layout_alignStart="@+id/button4"
+            android:layout_marginBottom="33dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Itinerary in pdf"
+            android:onClick="pdfView"
+            android:id="@+id/button5"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+</RelativeLayout>

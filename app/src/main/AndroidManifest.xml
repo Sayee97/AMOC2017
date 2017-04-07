@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.tourguide">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -33,10 +33,14 @@
         <activity android:name=".Place_Picker" />
         <activity
             android:name=".SignOut"
-            android:parentActivityName=".SignIn" />
-        <activity android:name=".CreateTrip" />
-        <activity android:name=".Itenary"></activity>
-
+            android:parentActivityName=".FrontEnd" />
+        <activity android:name=".CreateTrip"
+            android:parentActivityName=".FrontEnd"/>
+        <activity android:name=".Itenary"
+            android:parentActivityName=".FrontEnd"/>
+        <activity android:name=".FrontEnd" />
+        <activity android:name=".PdfCreate"
+            android:parentActivityName=".FrontEnd"></activity>
     </application>
 
 </manifest>

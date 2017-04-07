@@ -7,13 +7,13 @@
     android:orientation="vertical"
     tools:context="com.example.android.tourguide.Place_Picker">
 
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/roadtrip"
-        android:id="@+id/roadtrip"
-        android:scaleType="centerCrop"/>
-
+        android:src="@drawable/roadmap"
+        android:scaleType="centerCrop"
+        android:id="@+id/roadmap"/>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
